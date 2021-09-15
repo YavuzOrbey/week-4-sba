@@ -15,8 +15,18 @@ class GroceryApp extends React.Component {
         }
     }
     sendToGrocery = (foodItem) => {
-        let newChecked = [...this.state.checked, foodItem]
-        this.setState({ checked: newChecked })
+        //if it's already in there take it away
+        let index = this.state.checked.indexOf(foodItem);
+        if (index === -1) {
+            let newChecked = [...this.state.checked, foodItem]
+            this.setState({ checked: newChecked })
+        }
+        else {
+            console.log(index)
+            let newChecked = this.state.checked.filter((item) => item !== foodItem)
+            this.setState({ checked: newChecked })
+        }
+
 
     }
     render() {
