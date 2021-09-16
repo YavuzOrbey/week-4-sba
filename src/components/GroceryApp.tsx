@@ -3,18 +3,25 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home"
 import FoodList from './FoodList'
-import { vegetables, fruits } from './foods.js'
-class GroceryApp extends React.Component {
+import { vegetables, fruits } from './foods'
+
+interface IState{
+    checked: Array<string>
+}
+interface IProps {
+    
+}
+export default class GroceryApp extends React.Component<IProps, IState> {
 
 
-    constructor(props) {
+    constructor(props:any) {
         super(props)
         console.log("constructor called")
         this.state = {
             checked: []
         }
     }
-    sendToGrocery = (foodItem) => {
+    sendToGrocery = (foodItem:string) => {
         //if it's already in there take it away
         let index = this.state.checked.indexOf(foodItem);
         if (index === -1) {
@@ -69,5 +76,3 @@ class GroceryApp extends React.Component {
         </div>)
     }
 }
-
-export default GroceryApp;
